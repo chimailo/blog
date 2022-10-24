@@ -7,6 +7,7 @@ export default function Document() {
       <Head />
       <body>
         <Main />
+        <div id="drawer" />
         <NextScript />
         <Script
           id="color-mode"
@@ -34,7 +35,6 @@ const injectColorMode = `
       }
       return 'light'
     }
-
     getColorMode() === 'dark' && document.documentElement.classList.add('dark')
   })()
 `;

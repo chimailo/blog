@@ -22,15 +22,18 @@ const useTheme = () => {
 
   const handleTheme = () => {
     if (theme === "light") {
-      setTheme("dark");
       document.documentElement.classList.add("dark");
-      localStorage.setItem("ci-color-mode", "dark");
+      changeTheme("dark")
     } else {
-      setTheme("light");
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("ci-color-mode", "light");
+      changeTheme("light")
     }
   };
+  
+  const changeTheme = (value: string) => {
+    setTheme(value);
+    localStorage.setItem("ci-color-mode", value);
+  }
 
   return { theme, onChange: handleTheme };
 };
@@ -39,11 +42,22 @@ const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState<Theme>(null);
 
   useEffect(() => {
-    const theme =
-      (window.matchMedia("(prefers-color-scheme: dark)").matches && "dark") ||
-      (localStorage.getItem("ci-color-mode") as Theme) ||
-      "light";
-    setTheme(theme);
+    function getColorMode() {
+      const colorPreference = window.localStorage.getItem('ci-color-mode')
+      const hasColorPreference = typeof colorPreference === 'string'
+
+      if (hasColorPreference) return colorPreference
+      
+      const mqPreference = window.matchMedia("(prefers-color-scheme: dark)")
+      const hasMQPreference = typeof mqPreference.matches === 'boolean'
+
+      if (hasMQPreference) {
+        return mqPreference.matches ? 'dark' : 'light'
+      }
+      return 'light'
+    }
+
+    setTheme(getColorMode());
   }, []);
 
   return (
