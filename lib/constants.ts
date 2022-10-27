@@ -10,12 +10,12 @@ export type Navlink = {
 
 export const NAVLINKS: Navlink[] = [
   {
-    name: "about me",
-    link: "/me",
+    name: "about",
+    link: "/#me",
   },
   {
     name: "articles",
-    link: "/articles",
+    link: "/blog",
   },
   {
     name: "projects",
