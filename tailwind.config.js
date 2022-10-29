@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   darkMode: "class",
@@ -23,6 +26,9 @@ module.exports = {
           800: "#0d3959",
           900: "#061d2d",
         },
+      },
+      fontFamily: {
+        'sans': ['Asap', ...defaultTheme.fontFamily.sans],
       },
       spacing: {
         28: "7rem",

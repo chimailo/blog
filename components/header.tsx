@@ -25,6 +25,7 @@ export default function Header() {
   return (
     <>
       <header
+        role="banner"
         className={clsx(
           "flex flex-shrink-0 z-[4] sticky top-0 justify-center items-center h-16 w-full transition-colors", { "bg-inherit delay-700": !open }
         )}
