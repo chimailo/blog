@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
@@ -7,7 +7,8 @@ import Sidebar from "./Sidebar";
 import Portal from "./portal";
 import { NAVLINKS } from "../lib/constants";
 import { useTheme } from "./theme";
-import { MoonIcon, RssIcon, SunIcon } from "./svg/icons";
+import { MoonIcon, SunIcon } from "./svg/icons";
+import CircledButton from "./CircledButton";
 
 export default function Header() {
   const [open, setOpen] = useState<boolean>(false);
@@ -27,18 +28,13 @@ export default function Header() {
       <header
         role="banner"
         className={clsx(
-          "flex flex-shrink-0 z-[4] sticky top-0 justify-center items-center h-16 w-full transition-colors", { "bg-inherit delay-700": !open }
+          "flex flex-shrink-0 z-[4] sticky top-0 justify-center items-center h-14 sm:h-16 w-full transition-colors", theme === "dark" ? "bg-main" : "bg-slate-50"
         )}
       >
         <div className="px-4 sm:px-6 lg:px-8 h-14 flex items-center max-w-screen-xl w-full">
           <Link href="/">
-            <a className="mr-8 leading-[0]">
-              <Image
-                src={`/assets/logo/logo-${theme}.svg`}
-                alt="logo"
-                width="40"
-                height="40"
-              />
+            <a className="mr-8 leading-[0] capitalize font-serif text-3xl sm:text-5xl dark:text-slate-50 text-main font-semibold">
+              Chima Ilo
             </a>
           </Link>
           <nav
@@ -47,43 +43,32 @@ export default function Header() {
           >
             <ul id="menu" role="menu" className="hidden md:flex items-center">
               {NAVLINKS.map((item, index) => (
-                <NavItem classes="py-2 px-4" key={index} item={item} />
+                <NavItem key={index} item={item} classes="tracking-wide py-2 relative px-4 after:transition after:origin-left hover:after:scale-x-100 after:w-full after:h-0.5 after:relative after:bg-current after:scale-x-0 after:block after:-bottom-1 after:left-0" />
               ))}
             </ul>
           </nav>
           <div className="flex items-center gap-2 sm:gap-4 ml-4 md:ml-12">
-            <button
-              type="button"
-              onClick={onChange}
-              className="m-0 leading-[0] border-none inline-flex p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-full transition-colors"
-            >
+            <CircledButton type="button" onChange={onChange}>
               {theme === "dark" ? (
-                <SunIcon svgClass="dark:text-primary-400" />
+                <SunIcon svgClass="dark:text-slate-300 w-4 h-4 sm:w-5 sm:h-5" />
               ) : (
-                <MoonIcon svgClass="text-primary-700" />
+                <MoonIcon svgClass="text-slate-700 w-4 h-4 sm:w-5 sm:h-5" />
               )}
-            </button>
-            <button
-              type="button"
-              onClick={onChange}
-              className="m-0 leading-[0] border-none inline-flex p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-full transition-colors"
-            >
-              <RssIcon svgClass="text-primary-700 dark:text-primary-400" />
-            </button>
-            <button
+            </CircledButton>
+            <CircledButton
               type="button"
               id="menubutton"
               onClick={() => setOpen(!open)}
-              className="m-0 leading-[0] border-none inline-flex md:hidden p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-full transition-colors"
+              classes="md:hidden"
               aria-haspopup="true"
               aria-controls="menu"
             >
-              <div className="w-6 h-6 relative">
-                <span className={clsx("h-0.5 dark:bg-primary-400 bg-primary-800 absolute block right-0 w-[120%] top-[10%] transition-opacity", open ? "opacity-0" : "opacity-1")}></span>
-                <span className={clsx("w-full h-0.5 dark:bg-primary-400 bg-primary-800 absolute block right-0 transition-transform duration-500", open ? "-rotate-[225deg] top-1/2" : "top-[45%]")}></span>
-                <span className={clsx("h-0.5 dark:bg-primary-400 bg-primary-800 absolute block right-0 transition-transform duration-500", open ? "rotate-[225deg] top-1/2 w-full" : "w-[80%] bottom-[10%]")}></span>
+              <div className="w-5 h-5 relative">
+                <span className={clsx("h-0.5 dark:bg-slate-300 bg-slate-700 absolute block right-0 w-[120%] top-0 transition-opacity", open ? "opacity-0" : "opacity-1")}></span>
+                <span className={clsx("w-full h-0.5 dark:bg-slate-300 bg-slate-700 absolute block top-1/2 right-0 transition-transform duration-500", open ? "-rotate-[225deg]" : "")}></span>
+                <span className={clsx("h-0.5 dark:bg-slate-300 bg-slate-700 absolute block right-0 transition-transform bottom-0 duration-500", open ? "rotate-[225deg] w-full" : "w-[80%]")}></span>
               </div>
-            </button>
+            </CircledButton>
           </div>
         </div>
       </header>

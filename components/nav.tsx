@@ -14,7 +14,7 @@ const NavItem = ({ classes, item }: Props) => {
       <Link href={item.link}>
         <a
           role="menuitem"
-          className={`capitalize block font-medium w-full truncate text-primary-800 dark:text-primary-300 hover:text-primary-600 dark:hover:text-primary-100 transition-colors ${classes}`}
+          className={`capitalize block font-medium w-full truncate text-slate-600 hover:text-main dark:text-slate-300 transition-all dark:hover:text-slate-50 ${classes}`}
         >
           {item.name}
         </a>

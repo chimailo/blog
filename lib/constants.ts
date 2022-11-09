@@ -6,15 +6,12 @@ export const HOME_OG_IMAGE_URL =
 export type Navlink = {
   name: string;
   link: string;
+  external?: boolean;
 }
 
 export const NAVLINKS: Navlink[] = [
   {
-    name: "about",
-    link: "/#me",
-  },
-  {
-    name: "articles",
+    name: "blog",
     link: "/blog",
   },
   {
@@ -24,5 +21,10 @@ export const NAVLINKS: Navlink[] = [
   {
     name: "contact",
     link: "/#contact",
+  },
+  {
+    name: "resume",
+    link: "/#",
+    external: true
   },
 ];

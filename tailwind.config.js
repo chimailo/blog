@@ -14,21 +14,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: {
-          50: "#e9f4fc",
-          100: "#d2e9f9",
-          200: "#a6d2f2",
-          300: "#79bcec",
-          400: "#4da6e5",
-          500: "#208fdf",
-          600: "#1a73b3",
-          700: "#135686",
-          800: "#0d3959",
-          900: "#061d2d",
-        },
+        main: "#13233D",
       },
       fontFamily: {
         'sans': ['Asap', ...defaultTheme.fontFamily.sans],
+        'serif': ['Playfair Display', ...defaultTheme.fontFamily.serif],
       },
       spacing: {
         28: "7rem",
@@ -41,10 +31,6 @@ module.exports = {
         "6xl": "2.75rem",
         "7xl": "4.5rem",
         "8xl": "6.25rem",
-      },
-      boxShadow: {
-        sm: "0 5px 10px rgba(0, 0, 0, 0.12)",
-        md: "0 8px 30px rgba(0, 0, 0, 0.12)",
       },
     },
   },

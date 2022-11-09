@@ -13,8 +13,8 @@ export default function Layout({ children }: Props) {
     <>
       <Meta />
       <ThemeProvider>
-        <div className="min-h-screen bg-primary-50 dark:bg-primary-900 text-primary-900 dark:text-primary-200">
-          <a href="#main" className="sr-only focus:not-sr-only focus:top-6 focus:left-6 focus:z-50 focus:absolute focus:outline-0 focus:p-4 border-solid border-primary-700 border-2 rounded dark:border-primary-200">
+        <div className="min-h-screen bg-slate-50 dark:bg-main text-main transition dark:text-slate-300">
+          <a href="#main" className="sr-only focus:not-sr-only focus:top-6 focus:left-6 focus:z-50 focus:absolute focus:outline-0 focus:p-4 border-solid border-main border-2 rounded dark:border-slate-50">
             Skip to content
           </a>
           <Spacer size="small" />

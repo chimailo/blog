@@ -13,13 +13,10 @@ export default function Svg(props: SvgIconProps): JSX.Element {
     svgClass,
     colorAttr,
     children,
-    color = "inherit",
-    size = "md",
+    // size = "md",
     viewBox = "0 0 24 24",
     ...rest
   } = props;
-
-  const sizeClass = () => {};
 
   return (
     <svg
@@ -28,9 +25,9 @@ export default function Svg(props: SvgIconProps): JSX.Element {
       aria-hidden
       className={clsx(
         svgClass,
-        { "w-4 h-4": size === "sm" },
-        { "w-6 h-6": size === "md" },
-        { "w-8 h-8": size === "lg" },
+        // { "w-3 h-3": size === "sm" },
+        // { "w-5 h-5": size === "md" },
+        // { "w-8 h-8": size === "lg" },
         "select-none inline-block flex-shrink-0 text-inherit fill-current"
       )}
       {...rest}
