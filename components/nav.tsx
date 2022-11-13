@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Navlink } from "../lib/constants";
+import { ExternalLinkIcon } from "./svg/icons";
 
 type Props = {
   key: number;
@@ -14,9 +15,10 @@ const NavItem = ({ classes, item }: Props) => {
       <Link href={item.link}>
         <a
           role="menuitem"
-          className={`capitalize block font-medium w-full truncate text-slate-600 hover:text-main dark:text-slate-300 transition-all dark:hover:text-slate-50 ${classes}`}
+          className={`capitalize font-medium w-full whitespace-nowrap leading-none text-slate-600 hover:text-main dark:text-slate-300 block transition-all dark:hover:text-slate-50 ${classes}`}
         >
           {item.name}
+          {item.external && <ExternalLinkIcon svgClass="text-inherit w-3 h-3 ml-1" />}
         </a>
       </Link>
     </li>
