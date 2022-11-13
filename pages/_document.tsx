@@ -37,7 +37,7 @@ const injectColorMode = `
       if (hasMQPreference) {
         return mqPreference.matches ? 'dark' : 'light'
       }
-      return 'light'
+      return 'dark'
     }
     getColorMode() === 'dark' && document.documentElement.classList.add('dark')
   })()
