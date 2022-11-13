@@ -1,6 +1,6 @@
 import Svg, { type SvgIconProps } from "..";
 
-export default function MoonIcon(
+export default function SunIcon(
   props: Omit<SvgIconProps, "children">
 ): JSX.Element {
   return (
