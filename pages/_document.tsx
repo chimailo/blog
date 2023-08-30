@@ -1,17 +1,15 @@
-import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Asap:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
-      <body>
+      <Head />
+      <body
+        id="body"
+        className="min-h-screen bg-slate-50 dark:bg-main-700 text-main-600 transition dark:text-main-100 font-sans"
+      >
         <Main />
-        <div id="drawer" />
         <NextScript />
         <Script
           id="color-mode"
@@ -26,7 +24,7 @@ export default function Document() {
 const injectColorMode = `
   (function() {
     function getColorMode() {
-      const colorPreference = window.localStorage.getItem('ci-color-mode')
+      const colorPreference = window.localStorage.getItem('ci-theme')
       const hasColorPreference = typeof colorPreference === 'string'
 
       if (hasColorPreference) return colorPreference
